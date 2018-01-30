@@ -1,5 +1,6 @@
 using System.Linq;
 using AutoMapper;
+using Vega.Controllers;
 using Vega.Controllers.Resources;
 using Vega.Core.Models;
 
@@ -10,6 +11,7 @@ namespace Vega.Mapping
         public MappingProfile()
         {
              // Domain to API Resource
+            CreateMap<Photo, PhotoResource>();
             CreateMap(typeof(QueryResult<>), typeof(QueryResultResource<>));
             CreateMap<Make, MakeResource>();
             CreateMap<Make, KeyValuePairResource>();
