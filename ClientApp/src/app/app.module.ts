@@ -9,16 +9,17 @@ import { RouterModule } from '@angular/router';
 import * as Raven from 'raven-js'; 
 import {ToastyModule} from 'ng2-toasty';
 
-import { NavMenuComponent } from './core/nav-menu/nav-menu.component';
+import { AppErrorHandler } from './error/app-error-handler';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './core/home/home.component';
 import { CounterComponent } from './core/counter/counter.component';
 import { FetchDataComponent } from './core/fetch-data/fetch-data.component';
+import { HomeComponent } from './core/home/home.component';
+import { PaginationComponent } from './shared/pagination.component';
+import { PhotoService } from './services/photo.service';
+import { NavMenuComponent } from './core/nav-menu/nav-menu.component';
 import { VehicleFormComponent } from './core/vehicle-form/vehicle-form.component';
 import { VehicleService } from './services/vehicle.service';
-import { AppErrorHandler } from './error/app-error-handler';
 import { VehiclesListComponent } from './core/vehicles-list/vehicles-list.component';
-import { PaginationComponent } from './shared/pagination.component';
 import { ViewVehicleComponent } from './core/view-vehicle/view-vehicle.component';
 
 Raven.config('https://99f24dc509f145c1b7c93cec539f8cbb@sentry.io/275899').install();
@@ -43,9 +44,8 @@ Raven.config('https://99f24dc509f145c1b7c93cec539f8cbb@sentry.io/275899').instal
     FormsModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'vehicles', pathMatch: 'full' },
-      //{ path: 'home', component: VehiclesListComponent },
+      { path: 'home', component: VehiclesListComponent },
       { path: 'vehicles/new', component: VehicleFormComponent},
-      //{ path: 'vehicles/:id', component: VehicleFormComponent },
       { path: 'vehicles/edit/:id', component: VehicleFormComponent },
       { path: 'vehicles/:id', component: ViewVehicleComponent },
       { path: 'vehicles', component: VehiclesListComponent},
@@ -56,7 +56,8 @@ Raven.config('https://99f24dc509f145c1b7c93cec539f8cbb@sentry.io/275899').instal
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },
-    VehicleService
+    VehicleService,
+    PhotoService
   ],
   bootstrap: [AppComponent]
 })
