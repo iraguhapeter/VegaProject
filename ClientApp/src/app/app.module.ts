@@ -22,6 +22,8 @@ import { VehicleService } from './services/vehicle.service';
 import { VehiclesListComponent } from './core/vehicles-list/vehicles-list.component';
 import { ViewVehicleComponent } from './core/view-vehicle/view-vehicle.component';
 import { AlertModule, TabsModule } from 'ngx-bootstrap';
+import { ProgressService, BrowserXhrWithProgress } from './services/progress.service';
+import { BrowserXhr } from '@angular/http';
 
 Raven.config('https://99f24dc509f145c1b7c93cec539f8cbb@sentry.io/275899').install();
 
@@ -59,8 +61,10 @@ Raven.config('https://99f24dc509f145c1b7c93cec539f8cbb@sentry.io/275899').instal
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },
+    { provide: BrowserXhr, useClass: BrowserXhrWithProgress },
     VehicleService,
-    PhotoService
+    PhotoService,
+    ProgressService
   ],
   bootstrap: [AppComponent]
 })
