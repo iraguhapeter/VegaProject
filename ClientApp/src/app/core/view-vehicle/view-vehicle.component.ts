@@ -14,6 +14,7 @@ export class ViewVehicleComponent implements OnInit {
   @ViewChild('fileInput') fileInput: ElementRef;
   vehicle: any;
   vehicleId: number; 
+  photos: any[];
 
   constructor(
     private route: ActivatedRoute, 
@@ -32,6 +33,9 @@ export class ViewVehicleComponent implements OnInit {
   }
 
   ngOnInit() { 
+
+    this.photoService.getPhotos(this.vehicleId) 
+       .subscribe(photos => this.photos = photos);
     this.vehicleService.getVehicle(this.vehicleId)
       .subscribe(
         v => this.vehicle = v,
