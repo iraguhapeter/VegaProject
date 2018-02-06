@@ -9,10 +9,10 @@ import * as auth0 from 'auth0-js';
 export class Auth {
 
   auth0 = new auth0.WebAuth({
-    clientID: '0j6OeCbq1JcWYdE7uA9d2L51JvHGQ1aQ',
-    domain: 'aspdotnet.auth0.com',
+    clientID: '8a43226Nla2vzaRBb13VT9K54ymF6CEA',
+    domain: 'iraguha.eu.auth0.com',
     responseType: 'token id_token',
-    audience: 'https://aspdotnet.auth0.com/userinfo',
+    audience: 'https://iraguha.eu.auth0.com/userinfo',
     redirectUri: 'http://localhost:5000/',
     scope: 'openid'
   });

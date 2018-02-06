@@ -2,6 +2,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -24,7 +25,7 @@ namespace Vega
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        {   
             services.Configure<PhotoSettings>(Configuration.GetSection("PhotoSettings"));
             
             services.AddScoped<IVehicleRepository, VehicleRepository>();
@@ -35,6 +36,10 @@ namespace Vega
 
             services.AddDbContext<VegaDbContext>(options => 
                     options.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+             services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<VegaDbContext>()
+                .AddDefaultTokenProviders();
                     
             services.AddMvc();
 
@@ -46,8 +51,8 @@ namespace Vega
 
             }).AddJwtBearer(options =>
             {
-                options.Authority = "https://aspdotnet.auth0.com/";
-                options.Audience = "https://api.vega.com";
+                options.Authority = "https://iraguha.eu.auth0.com/";
+                options.Audience = "https://api.vega.final.com";
             });
 
             // In production, the Angular files will be served from this directory
