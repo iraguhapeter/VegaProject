@@ -3,6 +3,7 @@ using AutoMapper;
 using Vega.Controllers;
 using Vega.Controllers.Resources;
 using Vega.Core.Models;
+using Vega.Core.ViewModels;
 
 namespace Vega.Mapping
 {
@@ -10,6 +11,10 @@ namespace Vega.Mapping
     {
         public MappingProfile()
         {
+            // Identity Mapping
+            CreateMap<RegistrationViewModel,ApplicationUser>()
+              .ForMember(au => au.UserName, map => map.MapFrom(vm => vm.Email));
+
              // Domain to API Resource
             CreateMap<Photo, PhotoResource>();
             CreateMap(typeof(QueryResult<>), typeof(QueryResultResource<>));
