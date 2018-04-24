@@ -4,6 +4,7 @@ import { ToastyService } from 'ng2-toasty';
 import { VehicleService } from '../../services/vehicle.service';
 import { PhotoService } from '../../services/photo.service';
 import { ProgressService } from '../../services/progress.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-view-vehicle',
@@ -25,7 +26,8 @@ export class ViewVehicleComponent implements OnInit {
     private toasty: ToastyService,
     private progressService: ProgressService,
     private photoService: PhotoService,
-    private vehicleService: VehicleService) { 
+    private vehicleService: VehicleService,
+    private userService: UserService) { 
 
     route.params.subscribe(p => {
       this.vehicleId = +p['id'];
@@ -50,8 +52,11 @@ export class ViewVehicleComponent implements OnInit {
           }
         });
   }
+  isLoggedIn(){
+    return this.userService.isLoggedIn();
+  }
   delete() {
-    if (confirm("Are you sure?")) {
+    if (confirm("Are you sure you want to delete the car with id: " + this.vehicle.id)) {
       this.vehicleService.delete(this.vehicle.id)
         .subscribe(x => {
           this.router.navigate(['/vehicles']);
