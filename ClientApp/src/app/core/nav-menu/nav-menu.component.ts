@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Auth } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-nav-menu',
@@ -8,5 +10,9 @@ import { Auth } from '../../services/auth.service';
 })
 export class NavMenuComponent {
 
-  constructor(private auth: Auth) {}
+  constructor(private userService: UserService) { }
+
+  isLoggedIn() {
+    return this.userService.isLoggedIn();
+  }
 }

@@ -19,9 +19,13 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/font-awesome/css/font-awesome.css",
+        "../node_modules/ng2-toasty/bundles/style-bootstrap.css",
+        "../node_modules/ng2-toasty/bundles/style-default.css"
       ],
-      "scripts": [],
+      "scripts": [
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
@@ -59,15 +63,5 @@
     "build": {
       "progress": true
     }
-  },
-  "styles": [
-    "styles.css",
-    "../node_modules/font-awesome/css/font-awesome.css",
-    "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-    "../node_modules/ng2-toasty/bundles/style-bootstrap.css",
-    "../node_modules/ng2-toasty/bundles/style-default.css"
-  ],
-  "scripts": [
-    "../node_modules/ng2-toastr/bundles/ng2-toastr.min.js"
-   ]
+  }
 }

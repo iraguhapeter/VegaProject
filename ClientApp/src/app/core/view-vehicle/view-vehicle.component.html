@@ -1,4 +1,4 @@
-<h1>Vehicle</h1>
+<h2>Vehicle</h2>
 <div>
     <div *ngIf="vehicle">
         <tabset>
@@ -21,8 +21,8 @@
                     </ul>
                     <br/>
                     <p>
-                        <a class="btn btn-primary" [routerLink]="['/vehicles/edit/', vehicle.id]">Edit</a>
-                        <button class="btn btn-danger" (click)="delete()">Delete</button>
+                        <a class="btn btn-primary" [routerLink]="['/vehicles/edit/', vehicle.id]" *ngIf="isLoggedIn()" >Edit</a>
+                        <button class="btn btn-danger" (click)="delete()" *ngIf="isLoggedIn()">Delete</button>
                         <a class="btn btn-default" [routerLink]="['/vehicles']">View All Vehicles</a>
                     </p>
             </tab>
